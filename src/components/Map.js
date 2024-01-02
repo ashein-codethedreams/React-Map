@@ -7,13 +7,13 @@ const MapContainer = (props) => {
     height: "100%",
   };
 
-  const center = { lat: 16.84608227970477, lng: 96.1255321364523 };
-  const markerPosition = { lat: 16.84608227970477, lng: 96.1255321364523 };
+  const center = { lat: 16.84608227970477, lng: 96.1255321364523 }; // MTP condo, Hlaing Tsp, Yangon, Myanmar
+  const markerPosition = { lat: 16.84608227970477, lng: 96.1255321364523 }; // location logo marker It can also be different lat and lng
 
   return (
     <Map
       google={props.google}
-      zoom={14}
+      zoom={14} // higher value will be zoom +
       style={mapStyles}
       initialCenter={center}
     >
@@ -23,5 +23,5 @@ const MapContainer = (props) => {
 };
 
 export default GoogleApiWrapper({
-  apiKey: "AIzaSyAcyByuPCPF5ECFdgpvnS5LOPLhURL3YIw",
+  apiKey: "AIzaSyAcyByuPCPF5ECFdgpvnS5LOPLhURL3YIw", // api key from google cloud service
 })(MapContainer);
