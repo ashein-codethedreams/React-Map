@@ -1,41 +1,14 @@
+// App.js
+
 import React from "react";
-import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api";
+import MapContainer from "./components/Map";
 
-const libraries = ["places"];
-const mapContainerStyle = {
-  width: "100vw",
-  height: "100vh",
-};
-const center = {
-  lat: 16.84608227970477, // default latitude
-  lng: 96.1255321364523, // default longitude
-};
-
-const App = () => {
-  const { isLoaded, loadError } = useLoadScript({
-    googleMapsApiKey: "AIzaSyAcyByuPCPF5ECFdgpvnS5LOPLhURL3YIw",
-    libraries,
-  });
-
-  if (loadError) {
-    return <div>Error loading maps</div>;
-  }
-
-  if (!isLoaded) {
-    return <div>Loading maps</div>;
-  }
-
+function App() {
   return (
-    <div>
-      <GoogleMap
-        mapContainerStyle={mapContainerStyle}
-        zoom={10}
-        center={center}
-      >
-        <Marker position={center} />
-      </GoogleMap>
+    <div style={{ height: "500px", width: "100%" }}>
+      <MapContainer />
     </div>
   );
-};
+}
 
 export default App;
