@@ -1,27 +1,24 @@
-import React, { useEffect, useRef } from "react";
-import { GoogleApiWrapper } from "google-maps-react";
+import React from "react";
+import { Map, GoogleApiWrapper, Marker } from "google-maps-react";
 
 const MapContainer = (props) => {
-  const mapContainerRef = useRef(null);
+  const mapStyles = {
+    width: "100%",
+    height: "100%",
+  };
 
-  useEffect(() => {
-    const loadMap = async () => {
-      const map = new props.google.maps.Map(mapContainerRef.current, {
-        zoom: 14,
-        center: { lat: 16.84608227970477, lng: 96.1255321364523 },
-      });
-
-      new props.google.maps.Marker({
-        position: { lat: 16.84608227970477, lng: 96.1255321364523 },
-        map,
-      });
-    };
-
-    loadMap();
-  }, [props.google.maps]);
+  const center = { lat: 16.84608227970477, lng: 96.1255321364523 };
+  const markerPosition = { lat: 16.84608227970477, lng: 96.1255321364523 };
 
   return (
-    <div ref={mapContainerRef} style={{ width: "100%", height: "100vh" }} />
+    <Map
+      google={props.google}
+      zoom={14}
+      style={mapStyles}
+      initialCenter={center}
+    >
+      <Marker position={markerPosition} />
+    </Map>
   );
 };
 
